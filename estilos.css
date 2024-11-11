@@ -1,9 +1,48 @@
-.bg-primary {
-    background-color: #fe756e !important;
+.color-main {
+    background-color: #f46262
 }
 
-.btn-primary:hover {
-    background-color: #d54841 !important;
+.navbar {
+    background-color: #000;
+}
+.navbar-nav .nav-link.active {
+    color: #c25953;
+}
+.navbar-nav .nav-link, .navbar-brand {
+    color: #fff;
+}
+.cta-button {
+    background-color: #f46262;
+    color: #fff;
+}
+
+.cta-button:hover {
+    background-color: #c25953;
+    color: #fff;
+}
+
+.info-box {
+    background-color: #dcdcdc;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.footer {
+    background-color: #7f7f7f;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+.side-images {
+    background-color: #dcdcdc;
+    height: 180px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 
