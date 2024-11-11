@@ -64,7 +64,6 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
     <h1>Todavía <br><strong>no</strong><br> funciona esta página!</h1>
     <script src="scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 </body>
 
 </html>
