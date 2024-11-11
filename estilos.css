@@ -2,8 +2,8 @@
     background-color: #fe756e !important;
 }
 
-.btn-primary {
-    background-color: #fe756e;
+.btn-primary:hover {
+    background-color: #d54841 !important;
 }
 
 
