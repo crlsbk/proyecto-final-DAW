@@ -11,38 +11,6 @@ try {
 } catch (PDOException $e) {
     die("Could not connect to the database: " . $e->getMessage());
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST'):
-    $nom = $_POST['usuario'];
-    $pass = $_POST['contrasenia'];
-
-    if ($pass === $_POST['contrasenia_confirmar']):
-        $pass_encriptada = password_hash($pass, PASSWORD_DEFAULT);
-
-        //busca el ultimo id para que los ids tengan orden cronologico
-        $stmt2 = $pdo->prepare("SELECT MAX(id) AS id_mayor FROM logininfo");
-        $stmt2->execute();
-        $row = $stmt2->fetch(PDO::FETCH_ASSOC);
-        $ultimaId = $row['id_mayor'];
-        $nuevaId = $ultimaId + 1;
-        $sql = "INSERT INTO logininfo (id, usuario, contrasenia)
-                VALUES (:id, :usuario, :contrasenia)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':id', $nuevaId, PDO::PARAM_INT);
-        $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
-        $stmt->bindParam(':contrasenia', $pass_encriptada, PDO::PARAM_STR);
-
-        //si falla algo manda alertas de bootstrap
-        if ($stmt->execute()): ?>
-            <div class='alert alert-success mx-auto my-0' style="width: 30%">Usuario creado exitosamente</div>
-        <?php else: ?>
-            <div class='alert alert-danger mx-auto my-0' style="width: 30%">Error en el registro</div>
-        <?php endif;
-    else: ?>
-        <div class='alert alert-danger mx-auto my-0' style="width: 30%">Las contraseñas no coinciden</div>
-<?php endif;
-endif;
-
 ?>
 
 <!DOCTYPE html>
@@ -84,13 +52,49 @@ endif;
     </nav>
 </header>
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST'):
+    if (isset($_POST['usuario']) && isset($_POST['contrasenia']) && isset($_POST['contrasenia_confirmar'])):
+        $nom = $_POST['usuario'];
+        $pass = $_POST['contrasenia'];
+        if ($pass === $_POST['contrasenia_confirmar']):
+            $pass_encriptada = password_hash($pass, PASSWORD_DEFAULT);
+
+            //busca el ultimo id para que los ids tengan orden cronologico
+            $stmt2 = $pdo->prepare("SELECT MAX(id) AS id_mayor FROM logininfo");
+            $stmt2->execute();
+            $row = $stmt2->fetch(PDO::FETCH_ASSOC);
+            $ultimaId = $row['id_mayor'];
+            $nuevaId = $ultimaId + 1;
+            $sql = "INSERT INTO logininfo (id, usuario, contrasenia)
+                    VALUES (:id, :usuario, :contrasenia)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':id', $nuevaId, PDO::PARAM_INT);
+            $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
+            $stmt->bindParam(':contrasenia', $pass_encriptada, PDO::PARAM_STR);
+
+            //si falla algo manda alertas de bootstrap
+            if ($stmt->execute()): ?>
+                <div class='alert alert-success mx-auto my-0' style="width: 30%">Usuario creado exitosamente</div>
+            <?php else: ?>
+                <div class='alert alert-danger mx-auto my-0' style="width: 30%">Error en el registro</div>
+            <?php endif;
+        else: ?>
+            <div class='alert alert-danger mx-auto my-0' style="width: 30%">Las contraseñas no coinciden</div>
+        <?php endif;
+    else: ?>
+        <div class='alert alert-warning mx-auto my-0' style="width: 30%">Favor de llenar todos los campos</div>
+<?php endif;
+endif ?>
+
+
 <body>
-    <div class="container mx-auto" style="width: 30%;">
-        <div class=" card">
+    <div class="container mx-auto mt-4 " style="width: 30%;">
+        <div class="card" style="border-style: none">
             <div class="card-header color-main text-white text-center">
                 <h5>Registrar nuevo usuario</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12)">
                 <form action="registro.php" method="post">
                     <div class="my-3 py-1">
                         <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Usuario" required>

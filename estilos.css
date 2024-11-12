@@ -1,3 +1,7 @@
+body{
+    height: 100%;
+}
+
 .color-main {
     background-color: #f46262
 }
@@ -34,6 +38,8 @@
     color: #fff;
     padding: 10px;
     text-align: center;
+    position: fixed;
+    bottom: 0;
 }
 .side-images {
     background-color: #dcdcdc;
@@ -43,6 +49,14 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.widthCuarenta {
+    width: 40% !important;
+}
+
+.card{
+    border-style: none;
 }
 
 

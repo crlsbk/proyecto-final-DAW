@@ -18,26 +18,32 @@ try {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'):
-    $nom = $_POST['usuario'];
-    $pass = $_POST['contrasenia'];
 
-    $stmt = $pdo->prepare("SELECT * FROM logininfo where usuario=:nom");
-    $stmt->bindParam(':nom', $nom);
-    $stmt->execute();
+    if (isset($_POST['usuario']) && isset($_POST['contrasenia'])):
+        $nom = $_POST['usuario'];
+        $pass = $_POST['contrasenia'];
 
-    $conf_usuario = $stmt->FETCH(PDO::FETCH_ASSOC);
-    if ($conf_usuario):
-        if (password_verify($pass, $conf_usuario['contrasenia'])):
-            $_SESSION['loggedin'] = true; //para verificar inicio de sesón en otras páginas
-            $_SESSION['username'] = $nom;
-            header("Location: admin/admin.php");
-            exit();
-        //si algo falla manda alerta de bootstrap
+        $stmt = $pdo->prepare("SELECT * FROM logininfo where usuario=:nom");
+        $stmt->bindParam(':nom', $nom);
+        $stmt->execute();
+
+        $conf_usuario = $stmt->FETCH(PDO::FETCH_ASSOC);
+        if ($conf_usuario):
+            if (password_verify($pass, $conf_usuario['contrasenia'])):
+                $_SESSION['loggedin'] = true; //para verificar inicio de sesón en otras páginas
+                $_SESSION['username'] = $nom;
+                header("Location: admin/admin.php");
+                exit();
+            //si algo falla manda alerta de bootstrap
+            else: ?>
+                <div class='alert alert-danger mx-auto my-0' style="width: 30%">Usuario o contraseña incorrectos.</div>
+            <?php endif;
         else: ?>
-            <div class='alert alert-danger mx-auto my-0' style="width: 30%">Usuario o contraseña incorrectos.</div>
+            <div class='alert alert-danger mx-auto my-0' style="width: 30%">Usuario no encontrado.</div>
         <?php endif;
     else: ?>
-        <div class='alert alert-danger mx-auto my-0' style="width: 30%">Usuario no encontrado.</div>
+        <div class='alert alert-warning mx-auto my-0' style="width: 30%">Favor de llenar todos los campos</div>
+
 <?php endif;
 endif; ?>
 
