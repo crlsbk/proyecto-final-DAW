@@ -4,6 +4,7 @@ $password = "";
 $servidor = "127.0.0.1:3307";
 $basededatos = "opeg";
 
+//conecta a la base de datos
 try {
     $pdo = new PDO("mysql:host=$servidor;dbname=$basededatos;charset=utf8", $usuario, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'):
     if ($pass === $_POST['contrasenia_confirmar']):
         $pass_encriptada = password_hash($pass, PASSWORD_DEFAULT);
 
+        //busca el ultimo id para que los ids tengan orden cronologico
         $stmt2 = $pdo->prepare("SELECT MAX(id) AS id_mayor FROM logininfo");
         $stmt2->execute();
         $row = $stmt2->fetch(PDO::FETCH_ASSOC);
@@ -30,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'):
         $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
         $stmt->bindParam(':contrasenia', $pass_encriptada, PDO::PARAM_STR);
 
+        //si falla algo manda alertas de bootstrap
         if ($stmt->execute()): ?>
             <div class='alert alert-success mx-auto my-0' style="width: 30%">Usuario creado exitosamente</div>
         <?php else: ?>

@@ -28,10 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'):
     $conf_usuario = $stmt->FETCH(PDO::FETCH_ASSOC);
     if ($conf_usuario):
         if (password_verify($pass, $conf_usuario['contrasenia'])):
-            $_SESSION['loggedin'] = true;
+            $_SESSION['loggedin'] = true; //para verificar inicio de sesón en otras páginas
             $_SESSION['username'] = $nom;
             header("Location: admin/admin.php");
             exit();
+        //si algo falla manda alerta de bootstrap
         else: ?>
             <div class='alert alert-danger mx-auto my-0' style="width: 30%">Usuario o contraseña incorrectos.</div>
         <?php endif;

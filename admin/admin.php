@@ -1,19 +1,20 @@
 <?php
 $host = "localhost";
 $user = "root";
-$password = ""; // Cambia si tienes una contraseña
-$database = "opeg"; // Asegúrate de que el nombre de la base de datos es correcto
+$password = "";
+$database = "opeg";
 
-// Conexión a la base de datos
+// conexion a  base de datos
 $conn = new mysqli($host, $user, $password, $database);
 
-// Verifica la conexión
+// verificar la conexión
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
 session_start();
 
+// si no esta logged in lo saca
 if (!isset($_SESSION['loggedin'])) {
     header("Location: ../login.php");
     exit();
@@ -64,7 +65,6 @@ if (!isset($_SESSION['loggedin'])) {
 
 <body>
     <script src="scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 </body>
 
 </html>

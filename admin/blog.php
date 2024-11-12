@@ -1,19 +1,20 @@
 <?php
 $host = "localhost";
 $user = "root";
-$password = ""; // Cambia si tienes una contraseña
-$database = "opeg"; // Asegúrate de que el nombre de la base de datos es correcto
+$password = "";
+$database = "opeg";
 
-// Conexión a la base de datos
+// Conexión a base de datos
 $conn = new mysqli($host, $user, $password, $database);
 
-// Verifica la conexión
+// Verific conexión
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
 session_start();
 
+// si no estat logged in lo saca de la página
 if (!isset($_SESSION['loggedin'])) {
     header("Location: ../login.php");
     exit();
