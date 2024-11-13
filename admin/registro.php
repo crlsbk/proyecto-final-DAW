@@ -41,7 +41,7 @@ try {
                     <a class="nav-link" href="cotizaciones.php">Ver cotizaciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.html">Volver a página</a>
+                    <a class="nav-link" href="../index.php">Volver a página</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Cerrar sesión</a>

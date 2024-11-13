@@ -55,7 +55,7 @@
                         <a class="btn cta-button" href="cotizacion.php">Cotiza ahora</a>
                     </li>
                     <!-- si el usuario inicio sesión hay boton para ir a pagina deadmin -->
-                    <?php if ($_SESSION['loggedin']): ?>
+                    <?php if (isset($_SESSION['loggedin'])): ?>
                         <li class="nav-item">
                             <a class="btn cta-button ms-3" href="admin/admin.php">Página de administrador</a>
                         </li>
