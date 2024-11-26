@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 
-<body>
+<body style="height: 3000px;">
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -29,12 +29,13 @@
                             Servicios
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                            <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                            <li><a class="dropdown-item" href="#">Servicio 2</a></li>
+                            <li><a class="dropdown-item" href="consultoria.php">Consultoría gastronómica</a></li>
+                            <li><a class="dropdown-item" href="operacion.php">Consultoría de operación</a></li>
+                            <li><a class="dropdown-item" href="gestion.php">Gestión financiera</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nuestros clientes</a>
+                        <a class="nav-link" href="clientes.php">Nuestros clientes</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,16 +47,16 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">FAQ</a>
+                        <a class="nav-link" href="faq.php">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" href="blog.php">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn cta-button" href="#">Cotiza ahora</a>
+                        <a class="btn cta-button" href="cotizacion.php">Cotiza ahora</a>
                     </li>
                     <!-- si el usuario inicio sesión hay boton para ir a pagina deadmin -->
-                    <?php if ($_SESSION['loggedin']): ?>
+                    <?php if (isset($_SESSION['loggedin'])): ?>
                         <li class="nav-item">
                             <a class="btn cta-button ms-3" href="admin/admin.php">Página de administrador</a>
                         </li>
@@ -66,15 +67,12 @@
     </nav>
 
     <div class="container mt-4">
-        <div class="team-photo">
-            <p>Fotografía del equipo</p>
-        </div>
-        <div class="team-description">
+        <div class="fadeOut-Imgs">
             <h3>Descripción del equipo</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.</p>
+            <img src="imgs/lg.png">
         </div>
     </div>
-
     <footer class="footer">
         <div class="footer-top mt-2">
             <p>OPERADORA.OPEG@GMAIL.COM | +52 81 8020 7152</p>
@@ -82,8 +80,6 @@
         </div>
         <a href="login.php" style="margin-left: 70px; margin-right: 70px;">Inicio de sesión</a>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

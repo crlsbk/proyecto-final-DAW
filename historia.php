@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="inicio.php">Inicio</a>
+                        <a class="nav-link" href="index.php">Inicio</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,7 +55,7 @@
                     <li class="nav-item">
                         <a class="btn cta-button" href="cotizacion.php">Cotiza ahora</a>
                     </li>
-                    <?php if ($_SESSION['loggedin']): ?>
+                    <?php if (isset($_SESSION['loggedin'])): ?>
                         <li class="nav-item">
                             <a class="btn cta-button ms-3" href="admin/admin.php">Página de administrador</a>
                         </li>
