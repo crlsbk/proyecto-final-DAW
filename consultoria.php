@@ -68,7 +68,7 @@
 
     <div class="container mt-4 text-center">
         <h1 class="mb-4">Consultoria gastronómica</h1>
-        <p class="mb-4">En OPEG, ofrecemos consultoría gastronómica para ayudarte a mejorar la calidad y rentabilidad de tu negocio. Nuestros servicios incluyen:
+        <p class="mb-4 fs-5">En OPEG, ofrecemos consultoría gastronómica para ayudarte a mejorar la calidad y rentabilidad de tu negocio. Nuestros servicios incluyen:
             <br>
             <br>Optimización de menús: Creación de cartas atractivas y rentables.
             <br>Entrenamiento de personal: Capacitación en cocina, servicio y manejo de alimentos.

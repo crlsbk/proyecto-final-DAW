@@ -89,7 +89,7 @@
     </div>
     <p class="fs-5 text-center">Transformamos tus ideas en resultados. Confía en nosotros y descubre cómo nuestra experiencia, compromiso y pasión pueden llevar tu negocio al siguiente nivel.</p>
 
-    <footer class="footer">
+    <footer class="footer" style="position:fixed;">
         <div class="footer-top mt-2">
             <p>OPERADORA.OPEG@GMAIL.COM | +52 81 8020 7152</p>
             <p>Copyright© Operadora OPEG 2024</p>
