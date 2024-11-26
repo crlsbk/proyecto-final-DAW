@@ -22,3 +22,23 @@ function verContrasenia(){
         iconoConf.classList.add('bi-eye-slash');
     }
 }
+
+const contadores = document.querySelectorAll('.cont');
+const vel =50;
+
+contadores.forEach(cont =>{
+    console.log(cont.getAttribute('data-target'));
+    const actualizar = () => {
+        const target = +cont.getAttribute('data-target');
+        const contar = +cont.innerText.replace('%', '');
+        const inc = Math.ceil(target/vel);
+        if (contar<target){
+            cont.innerText = contar + inc + "%";
+            setTimeout(actualizar, 40)
+        } else {
+            cont.innerText = target + "%";
+        }
+    }
+
+    actualizar();
+});

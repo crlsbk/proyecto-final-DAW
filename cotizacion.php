@@ -46,7 +46,8 @@ try {
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                             <li><a class="dropdown-item" href="consultoria.php">Consultoría gastronómica</a></li>
-                            <li><a class="dropdown-item" href="servicios.php">Servicios</a></li>
+                            <li><a class="dropdown-item" href="operacion.php">Consultoría de operación</a></li>
+                            <li><a class="dropdown-item" href="gestion.php">Gestión financiera</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -82,13 +83,6 @@ try {
 
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST'):
-        /* 
-        $nombreCliente = isset($_POST['nombreCliente']) ? $_POST['nombreCliente'] : '';
-    $nombreRestaurante = isset($_POST['nombreRestaurante']) ? $_POST['nombreRestaurante']: '';
-    $telefono = isset($_POST['telefono']) ? $_POST['telefono']: '';
-    $direccion = isset($_POST['direccion']) ? $_POST['direccion']: '';
-    $mail = isset($_POST['mail']) ? $_POST['mail']: '';
-    */
         if (isset($_POST['nombreCliente']) && isset($_POST['nombreRestaurante']) && isset($_POST['telefono']) && isset($_POST['direccion']) && isset($_POST['mail'])):
             $nombreCliente = $_POST['nombreCliente'];
             $nombreRestaurante = $_POST['nombreRestaurante'];
@@ -168,5 +162,6 @@ try {
         <p>OPERADORA.OPEG@BUSINESS.COM | +52 8100000000</p>
     </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </html>

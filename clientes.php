@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operadora OPEG - Nosotros</title>
+    <title>Operadora OPEG</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
 </head>
@@ -22,22 +22,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="inicio.php">Inicio</a>
+                        <a class="nav-link" href="index.php">Inicio</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle " href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Servicios
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                            <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                            <li><a class="dropdown-item" href="#">Servicio 2</a></li>
+                            <li><a class="dropdown-item" href="consultoria.php">Consultoría gastronómica</a></li>
+                            <li><a class="dropdown-item" href="operacion.php">Consultoría de operación</a></li>
+                            <li><a class="dropdown-item" href="gestion.php">Gestión financiera</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nuestros clientes</a>
+                        <a class="nav-link active" href="clientes.php">Nuestros clientes</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Nosotros
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
@@ -46,16 +47,16 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">FAQ</a>
+                        <a class="nav-link" href="faq.php">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" href="blog.php">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn cta-button" href="#">Cotiza ahora</a>
+                        <a class="btn cta-button" href="cotizacion.php">Cotiza ahora</a>
                     </li>
                     <!-- si el usuario inicio sesión hay boton para ir a pagina deadmin -->
-                    <?php if ($_SESSION['loggedin']): ?>
+                    <?php if (isset($_SESSION['loggedin'])): ?>
                         <li class="nav-item">
                             <a class="btn cta-button ms-3" href="admin/admin.php">Página de administrador</a>
                         </li>
@@ -65,22 +66,24 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
-        <div class="team-photo">
-            <p>Fotografía del equipo</p>
-        </div>
-        <div class="team-description">
-            <h3>Descripción del equipo</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.</p>
-        </div>
+    <div class="container mt-4 text-center">
+        <h1 class="mb-4">Consultoria gastronómica</h1>
+        <p class="mb-4">En OPEG, ofrecemos consultoría gastronómica para ayudarte a mejorar la calidad y rentabilidad de tu negocio. Nuestros servicios incluyen:
+            <br>
+            <br>Optimización de menús: Creación de cartas atractivas y rentables.
+            <br>Entrenamiento de personal: Capacitación en cocina, servicio y manejo de alimentos.
+            <br>Gestión de costos y precios: Estrategias para reducir el costo de cada platillo.
+            <br>Control de inventarios: Reducción de desperdicios y mejor uso de insumos.
+            <br>Marketing gastronómico: Estrategias para atraer clientes e incrementar su consumo.
+        </p>
     </div>
+    <div class="clientes">HOLA</div>
 
-    <footer class="footer">
-        <p>OPERADORA.OPEG@BUSINESS.COM | +52 8100000000</p>
+    <footer class="footer" style="width:100%">
+        <p>OPERADORA.OPEG@GMAIL.COM | +52 81 8020 7152</p>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="scripts.js"></script>
 
 </html>
