@@ -42,3 +42,13 @@ contadores.forEach(cont =>{
 
     actualizar();
 });
+
+const equipo = document.querySelector('.equipo');
+window.addEventListener('scroll', () => {
+    const puntoEvento = 500;
+    if (window.scrollY > puntoEvento){
+        equipo.style.animationPlayState = 'running';
+    }
+});
+
+

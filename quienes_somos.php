@@ -65,14 +65,20 @@
             </div>
         </div>
     </nav>
-
-    <div class="container mt-4">
-        <div class="fadeOut-Imgs">
-            <h3>Descripción del equipo</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu consequat ac felis donec et odio pellentesque diam volutpat. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis leo.</p>
-            <img src="imgs/lg.png">
-        </div>
+    <div class="imagenTapada" style="height: 600px;">
+        <h1 class="fw-semibold">Nuestra historia</h1>
+        <img src="imgs/placeholder.png">
     </div>
+    <div class="texto">
+        <p class="fs-5 mx-4 pt-4">Operadora OPEG fue fundado en el 2020 por Claudia Mendoza, siendo este uno de los muchos negocios comenzados durante la pandemia. Teniendo ella más de 20 años de experiencia en el medio gastronomico; siendo responsable de organizar eventos como Taco Fest y Paralelo, y de administrar restaurantes como Milk, Kadoya, y Cantina La No. 20, decidio emprender en un negocio de administración independiente.
+            <br>
+            <br>Desde nuestra fundación, hemos tenido como objetivo ofrecer soluciones de administración y operación para cualquier tipo de negocio, nuestro objetivo siendo el mismo que el tuyo. Desde nuestra fundación hemos destacado por implementar estrategias personalizadas a cada negocio, siendo estas evaluadas y aprobadas por el dueño de este, reflejando esto nuestro compromiso con las necesidades especificas de cada uno de
+            nuestros clientes. Nuestra misión es darle una oportunidad a todos aquellos emprendedores de tener éxito y prosperar, sin importar si careces de experiencia o educación en administración, con OPEG tu éxito esta asegurado.
+            <br>
+            <br>Actualmente, en OPEG continuamos creciendo y adaptandonos al constantemente cambiente mercado de cada industria, posicionandonos como no solo un cliente, sino como un aliado estrategico para aquellas empresas que tienen toda la posibilidad y potencial para ser exitosas.
+        </p>
+    </div>
+
     <footer class="footer">
         <div class="footer-top mt-2">
             <p>OPERADORA.OPEG@GMAIL.COM | +52 81 8020 7152</p>
@@ -81,6 +87,7 @@
         <a href="login.php" style="margin-left: 70px; margin-right: 70px;">Inicio de sesión</a>
     </footer>
 </body>
+<script src="scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </html>

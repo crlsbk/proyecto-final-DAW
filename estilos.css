@@ -1,3 +1,7 @@
+:root{
+    --sombra: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 body{
     height: 100%;
     width: 100vw;
@@ -121,7 +125,35 @@ body{
     }
 }
 
-@keyframes fade-in {
-    from {scale: .8; opacity: 0; background-color: #000;}
-    to {scale: 1; opacity: 1; background-color: #7f7f7f;}
+.contenedorQuienes {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.imagenTapada{
+    position: sticky;
+    top: 0; 
+    width: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.texto{
+    position: relative;
+    background-color: #fff;
+    top: 0px;
+    box-shadow: var(--sombra);
+    height: 300px;
+    z-index: 2;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2024 at 09:29 PM
+-- Generation Time: Nov 26, 2024 at 10:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,7 +46,8 @@ CREATE TABLE `cotizaciones` (
   `nombre_restaurante` varchar(100) NOT NULL,
   `numero_telefono` int(12) NOT NULL,
   `direccion` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL
+  `email` varchar(50) NOT NULL,
+  `id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -66,8 +67,7 @@ CREATE TABLE `logininfo` (
 --
 
 INSERT INTO `logininfo` (`id`, `usuario`, `contrasenia`) VALUES
-(1, 'admin', '$2y$10$8J5FI.P3wATGpF40A6SN9uqlvuN9bXbgRH6zVABo1RAicC.ce3oiS'),
-(2, 'test', '$2y$10$C4L2JIaK4rgj8vtuhbc0s.OU6c/7JTFTTR6LH0jjushaSNP3VTbEy');
+(1, 'admin', '$2y$10$LB1IFEEelATFHN/MV900pOwfu395umBg1IRykChhu3NlsbkfGLkLK');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
