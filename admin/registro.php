@@ -54,33 +54,36 @@ try {
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST'):
-    if (isset($_POST['usuario']) && isset($_POST['contrasenia']) && isset($_POST['contrasenia_confirmar'])):
+    if (!empty($_POST['usuario']) && !empty($_POST['contrasenia']) && !empty($_POST['contraseniaConf'])):
         $nom = $_POST['usuario'];
         $pass = $_POST['contrasenia'];
-        if ($pass === $_POST['contrasenia_confirmar']):
-            $pass_encriptada = password_hash($pass, PASSWORD_DEFAULT);
 
-            //busca el ultimo id para que los ids tengan orden cronologico
-            $stmt2 = $pdo->prepare("SELECT MAX(id) AS id_mayor FROM logininfo");
-            $stmt2->execute();
-            $row = $stmt2->fetch(PDO::FETCH_ASSOC);
-            $ultimaId = $row['id_mayor'];
-            $nuevaId = $ultimaId + 1;
-            $sql = "INSERT INTO logininfo (id, usuario, contrasenia)
-                    VALUES (:id, :usuario, :contrasenia)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':id', $nuevaId, PDO::PARAM_INT);
-            $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
-            $stmt->bindParam(':contrasenia', $pass_encriptada, PDO::PARAM_STR);
+        $checkSQL = "SELECT * FROM logininfo WHERE usuario = :usuario";
+        $stmt = $pdo->prepare($checkSQL);
+        $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
+        $stmt->execute();
+        $checador = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            //si falla algo manda alertas de bootstrap
-            if ($stmt->execute()): ?>
-                <div class='alert alert-success mx-auto my-0' style="width: 30%">Usuario creado exitosamente</div>
-            <?php else: ?>
-                <div class='alert alert-danger mx-auto my-0' style="width: 30%">Error en el registro</div>
+        if (!$checador) :
+            if ($pass === $_POST['contraseniaConf']):
+                $pass_encriptada = password_hash($pass, PASSWORD_DEFAULT);
+                $sql = "INSERT INTO logininfo (usuario, contrasenia)
+                    VALUES (:usuario, :contrasenia)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
+                $stmt->bindParam(':contrasenia', $pass_encriptada, PDO::PARAM_STR);
+
+                //si falla algo manda alertas de bootstrap
+                if ($stmt->execute()): ?>
+                    <div class='alert alert-success mx-auto my-0' style="width: 30%">Usuario creado exitosamente</div>
+                <?php else: ?>
+                    <div class='alert alert-danger mx-auto my-0' style="width: 30%">Error en el registro</div>
+                <?php endif;
+            else: ?>
+                <div class='alert alert-danger mx-auto my-0' style="width: 30%">Las contraseñas no coinciden</div>
             <?php endif;
         else: ?>
-            <div class='alert alert-danger mx-auto my-0' style="width: 30%">Las contraseñas no coinciden</div>
+            <div class='alert alert-warning mx-auto my-0' style="width: 30%">El usuario ya existe!</div>
         <?php endif;
     else: ?>
         <div class='alert alert-warning mx-auto my-0' style="width: 30%">Favor de llenar todos los campos</div>
