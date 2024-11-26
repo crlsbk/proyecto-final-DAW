@@ -67,20 +67,34 @@
     </nav>
 
     <div class="container mt-4 text-center">
-        <h1 class="mb-4">Consultoria gastronómica</h1>
-        <p class="mb-4">En OPEG, ofrecemos consultoría gastronómica para ayudarte a mejorar la calidad y rentabilidad de tu negocio. Nuestros servicios incluyen:
-            <br>
-            <br>Optimización de menús: Creación de cartas atractivas y rentables.
-            <br>Entrenamiento de personal: Capacitación en cocina, servicio y manejo de alimentos.
-            <br>Gestión de costos y precios: Estrategias para reducir el costo de cada platillo.
-            <br>Control de inventarios: Reducción de desperdicios y mejor uso de insumos.
-            <br>Marketing gastronómico: Estrategias para atraer clientes e incrementar su consumo.
+        <h1 class="mb-4">Nuestros clientes</h1>
+        <p class="mb-4 fs-5">En OPEG, estamos orgullosos de haber recibido la confianza de más de 10 empresas en nuestros 4 años de vida. Desde empresas de marketing, restaurantes, y complejos deportivos, cada uno de ellos forma parte de nuestra historia y son familia para nosotros. Nos adaptamos a la necesidad de cada cliente, con disponibilidad 24/7, visitas constantes a la empresa, y más.
         </p>
     </div>
-    <div class="clientes">HOLA</div>
+    <div class="my-5 pt-3 pb-3 border-top border-bottom" style="width: 100vw;">
+        <div class="clientes">
+            <div class="cliente px-5"><img src="imgs/half_LogoWEB.webp"></div>
+            <div class="cliente px-5"><img src="imgs/chefschoice.png"></div>
+            <div class="cliente px-5"><img src="imgs/common.jpg"></div>
+            <div class="cliente px-5"><img src="imgs/kumquat.png"></div>
+            <div class="cliente px-5"><img src="imgs/lg.png"></div>
+            <div class="cliente px-5"><img src="imgs/panabi.jpg"></div>
+            <div class="cliente px-5"><img src="imgs/half_LogoWEB.webp"></div>
+            <div class="cliente px-5"><img src="imgs/chefschoice.png"></div>
+            <div class="cliente px-5"><img src="imgs/common.jpg"></div>
+            <div class="cliente px-5"><img src="imgs/kumquat.png"></div>
+            <div class="cliente px-5"><img src="imgs/lg.png"></div>
+            <div class="cliente px-5"><img src="imgs/panabi.jpg"></div>
+        </div>
+    </div>
+    <p class="fs-5 text-center">Transformamos tus ideas en resultados. Confía en nosotros y descubre cómo nuestra experiencia, compromiso y pasión pueden llevar tu negocio al siguiente nivel.</p>
 
-    <footer class="footer" style="width:100%">
-        <p>OPERADORA.OPEG@GMAIL.COM | +52 81 8020 7152</p>
+    <footer class="footer">
+        <div class="footer-top mt-2">
+            <p>OPERADORA.OPEG@GMAIL.COM | +52 81 8020 7152</p>
+            <p>Copyright© Operadora OPEG 2024</p>
+        </div>
+        <a href="login.php" style="margin-left: 70px; margin-right: 70px;">Inicio de sesión</a>
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

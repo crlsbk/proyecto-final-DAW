@@ -76,7 +76,11 @@
     </div>
 
     <footer class="footer">
-        <p>OPERADORA.OPEG@BUSINESS.COM | +52 8100000000</p>
+        <div class="footer-top mt-2">
+            <p>OPERADORA.OPEG@GMAIL.COM | +52 81 8020 7152</p>
+            <p>Copyright© Operadora OPEG 2024</p>
+        </div>
+        <a href="login.php" style="margin-left: 70px; margin-right: 70px;">Inicio de sesión</a>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

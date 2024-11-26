@@ -159,7 +159,11 @@ try {
     </div>
 
     <footer class="footer">
-        <p>OPERADORA.OPEG@BUSINESS.COM | +52 8100000000</p>
+        <div class="footer-top mt-2">
+            <p>OPERADORA.OPEG@GMAIL.COM | +52 81 8020 7152</p>
+            <p>Copyright© Operadora OPEG 2024</p>
+        </div>
+        <a href="login.php" style="margin-left: 70px; margin-right: 70px;">Inicio de sesión</a>
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
