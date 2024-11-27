@@ -33,17 +33,19 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
-
     <!-- Navbar -->
     <header>
-        <nav class="navbar navbar-expand justify-content-center">
+    <nav class="navbar navbar-expand justify-content-center">
             <div class="navbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="admin.php">Inicio</a>
+                        <a class="nav-link " href="admin.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.php">Blog</a>
+                        <a class="nav-link" href="blog.php">Administrar blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="FAQ.php">Administrar FAQs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="registro.php">Registrar nuevo usuario</a>
