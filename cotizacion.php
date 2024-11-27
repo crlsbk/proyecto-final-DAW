@@ -71,7 +71,7 @@ try {
                     <li class="nav-item">
                         <a class="btn cta-button" href="cotizacion.php">Cotiza ahora</a>
                     </li>
-                    <?php if ($_SESSION['loggedin']): ?>
+                    <?php if (isset($_SESSION['loggedin'])): ?>
                         <li class="nav-item">
                             <a class="btn cta-button ms-3" href="admin/admin.php">Página de administrador</a>
                         </li>
@@ -96,12 +96,6 @@ try {
             $telefono = $_POST['telefono'];
             $direccion = $_POST['direccion'];
             $mail = $_POST['mail'];
-            $sqlId = "SELECT MAX(id) AS maxid FROM cotizaciones";
-            $stmtId = $pdo->prepare($sqlId);
-            $stmtId->execute();
-            $row = $stmtId->fetch(PDO::FETCH_ASSOC);
-            $ultimaId = $row['maxid'];
-            $id = $ultimaId + 1;
             $to = 'juannnm05@gmail.com';
             $subject = 'Nueva cotización de' . $_POST['nombreRestaurante'];
             $cuerpo = '

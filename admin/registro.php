@@ -25,46 +25,6 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
-
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST'):
-    if (!empty($_POST['usuario']) && !empty($_POST['contrasenia']) && !empty($_POST['contraseniaConf'])):
-        $nom = $_POST['usuario'];
-        $pass = $_POST['contrasenia'];
-
-        $checkSQL = "SELECT * FROM logininfo WHERE usuario = :usuario";
-        $stmt = $pdo->prepare($checkSQL);
-        $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
-        $stmt->execute();
-
-        $checador = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!$checador):
-            if ($pass === $_POST['contraseniaConf']):
-                $pass_encriptada = password_hash($pass, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO logininfo (usuario, contrasenia)
-                    VALUES (:usuario, :contrasenia)";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
-                $stmt->bindParam(':contrasenia', $pass_encriptada, PDO::PARAM_STR);
-
-                //si falla algo manda alertas de bootstrap
-                if ($stmt->execute()): ?>
-                    <div class='alert alert-success mx-auto my-0' style="width: 30%">Usuario creado exitosamente</div>
-                <?php else: ?>
-                    <div class='alert alert-danger mx-auto my-0' style="width: 30%">Error en el registro</div>
-                <?php endif;
-            else: ?>
-                <div class='alert alert-danger mx-auto my-0' style="width: 30%">Las contraseñas no coinciden</div>
-            <?php endif;
-        else: ?>
-            <div class='alert alert-warning mx-auto my-0' style="width: 30%">El usuario ya existe.</div>
-        <?php endif;
-    else: ?>
-        <div class='alert alert-warning mx-auto my-0' style="width: 30%">Favor de llenar todos los campos</div>
-<?php endif;
-endif ?>
-
-
 <body>
 
     <header>
@@ -96,6 +56,47 @@ endif ?>
             </div>
         </nav>
     </header>
+
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'):
+        if (!empty($_POST['usuario']) && !empty($_POST['contrasenia']) && !empty($_POST['contraseniaConf'])):
+            $nom = $_POST['usuario'];
+            $pass = $_POST['contrasenia'];
+
+            $checkSQL = "SELECT * FROM logininfo WHERE usuario = :usuario";
+            $stmt = $pdo->prepare($checkSQL);
+            $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $checador = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!$checador):
+                if ($pass === $_POST['contraseniaConf']):
+                    $pass_encriptada = password_hash($pass, PASSWORD_DEFAULT);
+                    $sql = "INSERT INTO logininfo (usuario, contrasenia)
+                    VALUES (:usuario, :contrasenia)";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindParam(':usuario', $nom, PDO::PARAM_STR);
+                    $stmt->bindParam(':contrasenia', $pass_encriptada, PDO::PARAM_STR);
+
+                    //si falla algo manda alertas de bootstrap
+                    if ($stmt->execute()): ?>
+                        <div class='alert alert-success mx-auto my-0' style="width: 30%">Usuario creado exitosamente</div>
+                    <?php else: ?>
+                        <div class='alert alert-danger mx-auto my-0' style="width: 30%">Error en el registro</div>
+                    <?php endif;
+                else: ?>
+                    <div class='alert alert-danger mx-auto my-0' style="width: 30%">Las contraseñas no coinciden</div>
+                <?php endif;
+            else: ?>
+                <div class='alert alert-warning mx-auto my-0' style="width: 30%">El usuario ya existe.</div>
+            <?php endif;
+        else: ?>
+            <div class='alert alert-warning mx-auto my-0' style="width: 30%">Favor de llenar todos los campos</div>
+    <?php endif;
+    endif ?>
+
+
+
 
     <div class="container mx-auto mt-4 " style="width: 30%;">
         <div class="card" style="border-style: none">
