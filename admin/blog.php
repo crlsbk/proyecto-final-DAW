@@ -14,54 +14,13 @@ session_start();
 if (!isset($_SESSION['loggedin'])) {
     header("Location: ../login.php");
     exit();
-}
-
-$mensaje = "";
-
-// Manejo de la eliminación de blogs
-if (isset($_GET['delete_id'])) {
-    $delete_id = $_GET['delete_id'];
-    $stmt = $conn->prepare("DELETE FROM articulos WHERE id = ? AND tipo = 1");
-    $stmt->bind_param("i", $delete_id);
-    if ($stmt->execute()) {
-        $mensaje = "Blog eliminado con éxito.";
-    } else {
-        $mensaje = "Error al eliminar el blog.";
-    }
-    $stmt->close();
-}
-
-// Manejo de la creación de nuevos blogs
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo'], $_POST['contenido'], $_POST['autor'])) {
-    $titulo = $_POST['titulo'];
-    $contenido = $_POST['contenido'];
-    $autor = $_POST['autor'];
-    $fecha = date('Y-m-d');
-    $tipo = 1;
-
-    $stmt = $conn->prepare("INSERT INTO articulos (titulo, contenido, autor, publicacion_fecha, tipo) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssi", $titulo, $contenido, $autor, $fecha, $tipo);
-
-    if ($stmt->execute()) {
-        $mensaje = "Blog agregado con éxito.";
-    } else {
-        $mensaje = "Error al agregar el blog.";
-    }
-    $stmt->close();
-}
-
-// Obtener blogs
-$stmt = $conn->prepare("SELECT * FROM articulos WHERE tipo = 1 ORDER BY publicacion_fecha DESC");
-$stmt->execute();
-$result = $stmt->get_result();
-$blogs = $result->fetch_all(MYSQLI_ASSOC);
-$stmt->close();
-?>
+} ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrar Blogs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../estilos.css">
@@ -72,8 +31,8 @@ $stmt->close();
 
 <body>
 
-<header>
-    <nav class="navbar navbar-expand justify-content-center">
+    <header>
+        <nav class="navbar navbar-expand justify-content-center">
             <div class="navbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -101,50 +60,91 @@ $stmt->close();
             </div>
         </nav>
     </header>
+    <?php
 
-<div class="container mt-4">
-    <h1>Administrar Blogs</h1>
-    <br>
-    <?php if ($mensaje): ?>
-        <div class="alert alert-info"><?= $mensaje ?></div>
-    <?php endif; ?>
-    <form method="POST" class="mb-4">
-        <div class="mb-3">
-            <label for="titulo" class="form-label">Título</label>
-            <input type="text" id="titulo" name="titulo" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="contenido" class="form-label">Contenido</label>
-            <textarea id="contenido" name="contenido" class="form-control" rows="4" required></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="autor" class="form-label">Autor</label>
-            <input type="text" id="autor" name="autor" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Agregar Blog</button>
-    </form>
+    // Manejo de la eliminación de blogs
+    if (isset($_GET['delete_id'])) {
+        $delete_id = $_GET['delete_id'];
+        $stmt = $conn->prepare("DELETE FROM articulos WHERE id = ? AND tipo = 1");
+        $stmt->bind_param("i", $delete_id);
+        if ($stmt->execute()): ?>
+            <div class='alert alert-success mx-auto my-0' style="width: 30%">Blog eliminado con exito</div>
+        <?php else: ?>
+            <div class='alert alert-danger mx-auto my-0' style="width: 30%">Error al eliminar el blog</div>
+            <?php endif;
+        $stmt->close();
+    }
 
-    <br>
+    // Manejo de la creación de nuevos blogs
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'):
+        if (!empty($_POST['titulo']) && !empty($_POST['contenido']) && !empty($_POST['autor'])):
+            $titulo = $_POST['titulo'];
+            $contenido = $_POST['contenido'];
+            $autor = $_POST['autor'];
+            $fecha = date('Y-m-d');
+            $tipo = 1;
 
-    <h2>Blogs existentes</h2>
-    <br>
-    <div class="row g-3">
-    <?php foreach ($blogs as $blog): ?>
-        <div class="col-12"> 
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><?= htmlspecialchars($blog['titulo']) ?></h5>
-                    <p class="card-text"><?= nl2br(htmlspecialchars($blog['contenido'])) ?></p>
-                    <p class="text-muted">Autor: <?= htmlspecialchars($blog['autor']) ?></p>
-                    <p class="text-muted">Fecha: <?= htmlspecialchars($blog['publicacion_fecha']) ?></p>
-                    <a href="?delete_id=<?= htmlspecialchars($blog['id']) ?>" class="btn btn-danger btn-sm">Eliminar</a>
-                </div>
+            $stmt = $conn->prepare("INSERT INTO articulos (titulo, contenido, autor, publicacion_fecha, tipo) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssi", $titulo, $contenido, $autor, $fecha, $tipo);
+
+            if ($stmt->execute()) : ?>
+                <div class='alert alert-success mx-auto my-0' style="width: 30%">Blog agregado con éxito</div>
+            <?php else : ?>
+                <div class='alert alert-danger mx-auto my-0' style="width: 30%">Error en el registro</div>
+            <?php endif;
+        else: ?>
+            <div class='alert alert-warning mx-auto my-0' style="width: 30%">Favor de llenar todos los campos</div>
+    <?php endif;
+        $stmt->close();
+    endif;
+    // Obtener blogs
+    $stmt = $conn->prepare("SELECT * FROM articulos WHERE tipo = 1 ORDER BY publicacion_fecha DESC");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $blogs = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+    ?>
+
+    <div class="container mt-4">
+        <h1>Administrar Blogs</h1>
+        <form method="POST" class="mb-4">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" id="titulo" name="titulo" class="form-control" required>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
+            <div class="mb-3">
+                <label for="contenido" class="form-label">Contenido</label>
+                <textarea id="contenido" name="contenido" class="form-control" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="autor" class="form-label">Autor</label>
+                <input type="text" id="autor" name="autor" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar Blog</button>
+        </form>
 
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <br>
+
+        <h2>Blogs existentes</h2>
+        <br>
+        <div class="row g-3">
+            <?php foreach ($blogs as $blog): ?>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= htmlspecialchars($blog['titulo']) ?></h5>
+                            <p class="card-text"><?= nl2br(htmlspecialchars($blog['contenido'])) ?></p>
+                            <p class="text-muted">Autor: <?= htmlspecialchars($blog['autor']) ?></p>
+                            <p class="text-muted">Fecha: <?= htmlspecialchars($blog['publicacion_fecha']) ?></p>
+                            <a href="?delete_id=<?= htmlspecialchars($blog['id']) ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
