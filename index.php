@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
+    <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">OPERADORA OPEG</a>
@@ -22,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="inicio.php">Inicio</a>
+                        <a class="nav-link active" href="index.php">Inicio</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,7 +56,7 @@
                     <li class="nav-item">
                         <a class="btn cta-button" href="cotizacion.php">Cotiza ahora</a>
                     </li>
-                    <!-- si el usuario inicio sesión hay boton para ir a pagina deadmin -->
+                    <!-- Si el usuario inició sesión -->
                     <?php if (isset($_SESSION['loggedin'])): ?>
                         <li class="nav-item">
                             <a class="btn cta-button ms-3" href="admin/admin.php">Página de administrador</a>
@@ -66,32 +67,80 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <!-- Sección Principal (Introducción a la empresa) -->
+    <div class="container mt-5 text-center">
+        <h1 class="display-4 mb-4">Bienvenidos a Operadora OPEG</h1>
+        <p class="lead mb-4">Ofrecemos soluciones de consultoría y gestión financiera para mejorar la operación de tu negocio en la industria gastronómica. Conoce nuestros servicios y cómo podemos ayudarte a crecer.</p>
+    </div>
+
+    <!-- Sección de Servicios -->
+    <div class="container my-5 text-center">
+        <h2 class="mb-4">Nuestros Servicios</h2>
         <div class="row">
-            <div class="col-md-8">
-                <div class="info-box mb-4">
-                    <p>RECUADRO CON INFORMACIÓN ACERCA DE QUE RESTAURANTES OPERAN Y DESTACADOS</p>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <img src="imgs/consul.png" class="card-img-top" alt="Consultoría gastronómica">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="consultoria.php" class="text-decoration-none text-dark">Consultoría Gastronómica</a>
+                        </h5>
+                        <p class="card-text">Ayudamos a optimizar la operación de tu restaurante con estrategias efectivas y conocimientos del mercado.</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="side-images" style="margin-bottom: 40px;">
-                    <p>IMAGEN 1</p>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <img src="imgs/consul_op.jpg" class="card-img-top" alt="Consultoría de operación">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="operacion.php" class="text-decoration-none text-dark">Consultoría de Operación</a>
+                        </h5>
+                        <p class="card-text">Mejoramos los procesos operativos de tu negocio, incrementando la eficiencia y reduciendo costos.</p>
+                    </div>
                 </div>
-                <div class="side-images">
-                    <p>IMAGEN 2</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <img src="imgs/gestion.jpg" class="card-img-top" alt="Gestión financiera">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="gestion.php" class="text-decoration-none text-dark">Gestión Financiera</a>
+                        </h5>
+                        <p class="card-text">Proveemos asesoría en gestión financiera para garantizar el crecimiento y estabilidad de tu negocio.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Imágenes Rotatorias -->
+    <div class="my-5 pt-3 pb-3 border-top border-bottom" style="width: 100vw;">
+        <div class="clientes">
+            <div class="cliente px-5"><img src="imgs/half_LogoWEB.webp"></div>
+            <div class="cliente px-5"><img src="imgs/chefschoice.png"></div>
+            <div class="cliente px-5"><img src="imgs/common.jpg"></div>
+            <div class="cliente px-5"><img src="imgs/kumquat.png"></div>
+            <div class="cliente px-5"><img src="imgs/lg.png"></div>
+            <div class="cliente px-5"><img src="imgs/panabi.jpg"></div>
+            <div class="cliente px-5"><img src="imgs/half_LogoWEB.webp"></div>
+            <div class="cliente px-5"><img src="imgs/chefschoice.png"></div>
+            <div class="cliente px-5"><img src="imgs/common.jpg"></div>
+            <div class="cliente px-5"><img src="imgs/kumquat.png"></div>
+            <div class="cliente px-5"><img src="imgs/lg.png"></div>
+            <div class="cliente px-5"><img src="imgs/panabi.jpg"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-top mt-2">
+        <div class="footer-top mt-2 text-center">
             <p>OPERADORA.OPEG@GMAIL.COM | +52 81 8020 7152</p>
             <p>Copyright© Operadora OPEG 2024</p>
         </div>
         <a href="login.php" style="margin-left: 70px; margin-right: 70px;">Inicio de sesión</a>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </html>
